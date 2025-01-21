@@ -1,6 +1,6 @@
 WhatsApp Screenshot Bot
 
-WhatsApp Screenshot Bot adalah bot WhatsApp berbasis Node.js yang mampu:
+WhatsApp Screenshot Bot adalah bot WhatsApp berbasis Node.js yang dapat:
 	•	Mengambil screenshot dari halaman web yang diminta pengguna.
 	•	Menjadwalkan pengiriman screenshot harian secara otomatis.
 	•	Merespons perintah manual pengguna seperti !ss [URL].
@@ -8,37 +8,42 @@ WhatsApp Screenshot Bot adalah bot WhatsApp berbasis Node.js yang mampu:
 Bot ini dibangun menggunakan Baileys dan Puppeteer.
 
 Fitur
-	1.	Screenshot Manual:
+	•	Screenshot Manual:
 	•	Kirimkan perintah !ss [URL] melalui WhatsApp untuk mengambil screenshot dari halaman web tertentu.
-	2.	Screenshot Harian Otomatis:
+	•	Screenshot Harian Otomatis:
 	•	Bot secara otomatis mengirimkan screenshot dari Forex Factory Calendar setiap hari pukul 08:00.
-	3.	Perintah Bantuan:
+	•	Perintah Bantuan:
 	•	Kirimkan perintah !help untuk melihat daftar perintah yang tersedia.
-	4.	Notifikasi Awal:
+	•	Notifikasi Awal:
 	•	Bot akan mengirimkan pesan konfirmasi saat pertama kali aktif.
 
 Persyaratan
 	1.	Node.js (v16 atau lebih baru)
-	2.	npm
-	3.	WhatsApp Number yang terhubung dengan bot
-	4.	Dependencies:
+	2.	npm (Node Package Manager)
+	3.	Nomor WhatsApp yang terhubung dengan bot
+	4.	Dependensi:
 	•	Baileys untuk integrasi WhatsApp.
 	•	Puppeteer untuk mengambil screenshot halaman web.
 	•	node-cron untuk penjadwalan tugas otomatis.
 
 Instalasi
-	1.	Clone repository ini:
 
-git clone https://github.com/username/whatsapp-screenshot-bot.git
-cd whatsapp-screenshot-bot
+Ikuti langkah-langkah berikut untuk menjalankan bot ini di lokal Anda:
 
+1. Clone Repository Ini
 
-	2.	Install dependensi:
+Buka terminal dan jalankan perintah berikut:
+
+git clone https://github.com/sdhtele/webss-forexfactory.git
+cd webss-forexfactory
+
+2. Install Dependensi
+
+Pastikan Anda berada di dalam folder proyek, kemudian jalankan:
 
 npm install
 
-
-	3.	Konfigurasi:
+3. Konfigurasi
 	•	Buka file src/config.js dan masukkan nomor WhatsApp penerima untuk pesan otomatis:
 
 module.exports = {
@@ -46,17 +51,19 @@ module.exports = {
 };
 
 
-	4.	Jalankan bot:
+
+4. Jalankan Bot
+
+Setelah konfigurasi selesai, jalankan bot dengan perintah:
 
 node src/bot.js
 
-
-	5.	Scan QR Code:
+5. Scan QR Code
 	•	Setelah menjalankan bot, QR code akan muncul di terminal. Scan QR code menggunakan WhatsApp Anda untuk menghubungkan bot.
 
 Struktur Folder
 
-/whatsapp-bot
+/webss-forexfactory
 ├── src/
 │   ├── bot.js             <-- File utama untuk menjalankan bot
 │   ├── config.js          <-- File konfigurasi, seperti nomor penerima
@@ -64,15 +71,18 @@ Struktur Folder
 │   ├── tasks.js           <-- File untuk tugas otomatis
 │   ├── utils/
 │       ├── screenshot.js  <-- Fungsi untuk mengambil screenshot
-├── auth_info.json         <-- Data autentikasi bot (dibuat otomatis)
-├── package.json           <-- Metadata proyek
+├── auth_info.json         <-- Data autentikasi bot (file ini akan di-ignore, jangan diupload)
+├── .gitignore             <-- File untuk mengatur file dan folder yang di-ignore oleh git
+├── package.json           <-- Metadata proyek dan dependensi
 ├── package-lock.json      <-- Kunci versi dependensi
+├── README.md              <-- Dokumentasi proyek
+└── LICENSE                <-- Lisensi proyek (misal MIT License)
 
 Penggunaan
 
 Perintah Manual
 	1.	Ambil Screenshot:
-	•	Kirim pesan ke bot:
+	•	Kirimkan pesan ke bot:
 
 !ss [URL]
 
@@ -97,7 +107,7 @@ Tugas Otomatis
 
 Lisensi
 
-Proyek ini dilisensikan di bawah MIT License.
+Proyek ini dilisensikan di bawah MIT License. Lihat file LICENSE untuk detail lebih lanjut.
 
 Kontribusi
 	1.	Fork repository ini.
@@ -123,8 +133,8 @@ Masalah atau Pertanyaan?
 Jika Anda memiliki pertanyaan atau menemukan masalah, silakan buat issue di repository ini.
 
 Credits
-	•	Baileys
-	•	Puppeteer
-	•	node-cron
+	•	Baileys – Library untuk integrasi WhatsApp dengan Node.js.
+	•	Puppeteer – Library untuk mengambil screenshot dari halaman web.
+	•	node-cron – Library untuk penjadwalan tugas otomatis.
 
-Ganti https://github.com/username/whatsapp-screenshot-bot dengan URL GitHub repository Anda!
+Dengan perubahan ini, URL repository GitHub telah diperbarui menjadi https://github.com/sdhtele/webss-forexfactory, dan file README.md sudah disesuaikan dengan format yang lebih terstruktur dan mudah dibaca.
