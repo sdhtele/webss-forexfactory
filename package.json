@@ -1,0 +1,17 @@
+{
+  "name": "whatsapp-screenshot-bot",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp untuk mengambil screenshot halaman web",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js"
+  },
+  "dependencies": {
+    "baileys": "^4.0.0",
+    "puppeteer": "^19.0.0",
+    "node-cron": "^3.0.0"
+  },
+  "devDependencies": {},
+  "author": "ngnawfal",
+  "license": "MIT"
+}
