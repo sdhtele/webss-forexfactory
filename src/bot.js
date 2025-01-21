@@ -4,34 +4,42 @@ const { handleCommand } = require('./commands');
 const { setupDailyTask } = require('./tasks');
 const { recipients } = require('./config');
 
+// Fungsi utama untuk menjalankan bot
 const startBot = async () => {
+    // Membuat koneksi ke WhatsApp
     const sock = makeWASocket({
         auth: state,
-        printQRInTerminal: true,
+        printQRInTerminal: true, // Tampilkan QR di terminal
     });
 
+    // Simpan status autentikasi secara otomatis
     sock.ev.on('creds.update', saveState);
 
-    // Tugas otomatis
+    // Mengatur tugas otomatis harian
     setupDailyTask(sock);
 
     // Event listener untuk pesan masuk
     sock.ev.on('messages.upsert', async ({ messages, type }) => {
         if (type === 'notify') {
-            const msg = messages[0];
+            const msg = messages[0]; // Pesan pertama dalam batch
             if (!msg.key.fromMe && msg.message) {
-                await handleCommand(sock, msg);
+                try {
+                    await handleCommand(sock, msg); // Tangani perintah
+                } catch (error) {
+                    console.error('Gagal memproses perintah:', error);
+                }
             }
         }
     });
 
-    // Tanda bot berhasil aktif
+    // Event listener untuk pembaruan koneksi
     sock.ev.on('connection.update', async (update) => {
-        const { connection } = update;
-        if (connection === 'open') {
-            console.log('Bot terhubung ke WhatsApp!');
+        const { connection, lastDisconnect } = update;
 
-            // Kirim pesan konfirmasi
+        if (connection === 'open') {
+            console.log('Bot berhasil terhubung ke WhatsApp!');
+
+            // Kirim pesan konfirmasi ke penerima pertama
             try {
                 const recipient = recipients[0];
                 await sock.sendMessage(recipient, {
@@ -41,8 +49,14 @@ const startBot = async () => {
             } catch (error) {
                 console.error('Gagal mengirim pesan konfirmasi:', error);
             }
+        } else if (connection === 'close') {
+            const reason = lastDisconnect?.error?.output?.statusCode || 'Tidak diketahui';
+            console.error(`Koneksi terputus. Alasan: ${reason}`);
         }
     });
 };
 
-startBot();
+// Memulai bot
+startBot().catch((error) => {
+    console.error('Gagal memulai bot:', error);
+});
