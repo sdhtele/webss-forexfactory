@@ -1,5 +1,3 @@
-Berikut adalah contoh README yang dapat digunakan untuk proyek WhatsApp bot Anda di GitHub:
-
 WhatsApp Screenshot Bot
 
 WhatsApp Screenshot Bot adalah bot WhatsApp berbasis Node.js yang mampu:
